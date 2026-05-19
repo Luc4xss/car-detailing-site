@@ -1,0 +1,5 @@
+- [ ] Update BeforeAfter.js to render only 3 lenses around active index (activedIndex-1, activedIndex, activedIndex+1, clamped)
+- [ ] Remove handleSlider DOM querying and use React conditional className instead
+- [ ] Remove translateX logic; center active card using flex layout
+- [ ] Verify +/- buttons clamp correctly
+- [ ] (If needed) Adjust BeforeAfter.module.css for non-active card styling/size

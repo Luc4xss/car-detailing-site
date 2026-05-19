@@ -1,0 +1,43 @@
+.errorOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(0.4rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.errorPopup {
+  background: white;
+  padding: 3rem;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1.8rem;
+}
+
+.errorPopup button {
+  padding: 1rem 3rem;
+  border-radius: 1rem;
+  border: none;
+  background-color: #ff4444;
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.errorPopup div {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: red;
+}
+
+.errorPopup h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}

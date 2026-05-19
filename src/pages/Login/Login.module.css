@@ -1,0 +1,225 @@
+.loginMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60rem;
+  width: 24rem;
+  gap: 12rem;
+  padding: 2rem;
+  border: 0.4rem solid #acfa7e;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  background-color: #acfa7e;
+  transition: 0.4s all;
+}
+
+.loginContainer.active {
+  width: 60rem;
+  background-color: white;
+  color: white;
+  border: 0.4rem solid #acfa7e;
+}
+
+.loginContainer h2 {
+  font-size: 3rem;
+  color: white;
+}
+
+.loginContainer.active h2 {
+  color: #acfa7e;
+}
+
+.loginContainer button {
+  width: 80%;
+  height: 6rem;
+  border: 0.2rem solid white;
+  background-color: #acfa7e;
+  box-shadow: 0rem 0rem 2rem #acfa7e;
+  border-radius: 1.4rem;
+  font-weight: 600;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: 0.4s all;
+  color: white;
+}
+
+.loginContainer button:hover {
+  background-color: #acfa7e;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: none;
+}
+
+.loginContainer.active button {
+  width: 80%;
+  height: 6rem;
+  border: 0.2rem solid #acfa7e;
+  box-shadow: 0rem 0rem 2rem #acfa7e;
+  background-color: white;
+  border-radius: 1.4rem;
+  font-weight: 600;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: black;
+  transition: 0.4s all;
+}
+
+.loginContainer.active button:hover {
+  background-color: #acfa7e;
+  border: 0.4rem solid #acfa7e;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: none;
+}
+
+.loginContainer .inputContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.loginContainer .input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 2rem;
+  gap: 1rem;
+  height: 6rem;
+  width: 100%;
+  border: 0.2rem solid #acfa7e;
+  border-radius: 0.8rem;
+}
+
+.loginContainer input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.loginContainer svg {
+  color: black;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* CONTAINER DE CRIAÇÃO DE CONTA */
+
+.registerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60rem;
+  width: 24rem;
+  gap: 12rem;
+  padding: 2rem;
+  border: 0.4rem solid #acfa7e;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  background-color: #acfa7e;
+  transition: 0.4s all;
+}
+
+.registerContainer.active {
+  width: 60rem;
+  background-color: white;
+  color: white;
+}
+
+.registerContainer h2 {
+  font-size: 3rem;
+  color: white;
+}
+
+.registerContainer.active h2 {
+  color: #acfa7e;
+}
+
+.registerContainer button {
+  width: 80%;
+  height: 6rem;
+  border: 0.2rem solid white;
+  background-color: #acfa7e;
+  box-shadow: 0rem 0rem 2rem #acfa7e;
+  border-radius: 1.4rem;
+  font-weight: 600;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: 0.4s all;
+  color: white;
+}
+
+.registerContainer button:hover {
+  background-color: #acfa7e;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: none;
+}
+
+.registerContainer.active button {
+  width: 80%;
+  height: 6rem;
+  border: 0.2rem solid #acfa7e;
+  box-shadow: 0rem 0rem 2rem #acfa7e;
+  background-color: white;
+  border-radius: 1.4rem;
+  font-weight: 600;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: black;
+  transition: 0.4s all;
+}
+
+.registerContainer.active button:hover {
+  background-color: #acfa7e;
+  border: 0.4rem solid #acfa7e;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: none;
+}
+
+.registerContainer .inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.registerContainer .input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 2rem;
+  gap: 1rem;
+  height: 6rem;
+  width: 100%;
+  border: 0.2rem solid #acfa7e;
+  border-radius: 0.8rem;
+}
+
+.registerContainer input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.registerContainer svg {
+  color: black;
+  font-size: 1.8rem;
+  cursor: pointer;
+}

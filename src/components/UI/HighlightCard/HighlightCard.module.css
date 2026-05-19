@@ -1,0 +1,43 @@
+.highlightCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2rem;
+  padding: 1rem 3rem;
+  background-color: var(--black);
+  width: 44rem;
+  height: 14rem;
+  border-radius: 1rem;
+  color: var(--white);
+  box-shadow: 0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.4);
+}
+
+.highlightCard h2 {
+  font-size: 2rem;
+}
+.highlightCard p {
+  font-size: 1.6rem;
+}
+
+.highlightCard svg {
+  color: var(--primary-green);
+  font-size: 3.6rem;
+}
+
+.highlightCard .iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 8rem;
+  height: 8rem;
+  border: 0.3rem solid var(--primary-green);
+  border-radius: 50%;
+}
+
+.textsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0.8rem;
+  width: 100%;
+}

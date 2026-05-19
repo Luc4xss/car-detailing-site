@@ -1,0 +1,30 @@
+.returnButton {
+  position: fixed;
+  left: 2rem;
+  top: 2rem;
+  width: 4rem;
+  height: 4rem;
+  text-align: center;
+  line-height: 5rem;
+  border-radius: 50%;
+  border: 0.2rem solid var(--primary-green);
+  box-shadow: 0rem 0rem 1rem var(--primary-green);
+  z-index: 999;
+  background-color: var(--white);
+  transition: 0.4s all;
+  cursor: pointer;
+}
+
+.returnButton svg {
+  font-size: 2rem;
+  color: var(--black);
+  transition: 0.4s all;
+}
+
+.returnButton:hover {
+  transform: scale(1.1);
+}
+
+.returnButton:hover svg {
+  color: var(--primary-green);
+}

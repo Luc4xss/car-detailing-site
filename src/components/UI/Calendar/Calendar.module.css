@@ -1,0 +1,89 @@
+.calendarOverlay {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(0.4rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.calendarOverlay h2 {
+  font-size: 4rem;
+  color: var(--primary-green);
+  background-color: var(--white);
+  padding: 0rem 4rem;
+  border-radius: 0.4rem;
+}
+
+.calendarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--shadow-green);
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.calendarHeader {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.calendarHeader p {
+  width: 8rem;
+  height: 3rem;
+  line-height: 3rem;
+  border-radius: 0.4rem;
+  text-align: center;
+  background-color: var(--white);
+  color: var(--primary-green);
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.datesGrid {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  gap: 0.2rem;
+  border-radius: 0.4rem;
+  padding: 0.2rem;
+}
+
+.dateBox {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 0.4rem;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 0.4rem;
+  background-color: var(--white);
+  transition: 0.2s all ease-in-out;
+  cursor: pointer;
+}
+
+.dateBox:hover {
+  transform: scale(1.05);
+}
+
+.dateBox.blocked:hover {
+  border: 0.2rem solid red;
+}
+
+.dateBox.previous {
+  opacity: 0.7;
+}
+
+.dateBox.blocked {
+  color: red;
+}
+
+.dateBox.weekend {
+  background-color: var(--shadow-green);
+  color: var(--white);
+}

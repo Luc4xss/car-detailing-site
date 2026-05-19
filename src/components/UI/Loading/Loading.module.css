@@ -1,0 +1,18 @@
+.loadingOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(0.4rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loadingIcon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 0.4rem solid rgba(172, 250, 126, 0.2);
+  border-top: 0.4rem solid #acfa7e;
+}

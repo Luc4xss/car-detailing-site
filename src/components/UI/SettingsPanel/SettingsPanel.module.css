@@ -1,0 +1,339 @@
+.settingsPanel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+  width: 80%;
+  max-width: 96rem;
+}
+
+.settingsPanelContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* SIDE BAR FECHADA */
+
+.settingsPanelNavBar {
+  position: absolute;
+  left: -3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  min-height: 8rem;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  background-color: var(--white);
+  border: 0.2rem solid var(--primary-green);
+  border-right: none;
+  cursor: pointer;
+  transition: 0.4s all;
+}
+
+.settingsPanelNavBar svg:hover {
+  color: var(--primary-green);
+  transform: scale(1.2);
+  transition: 0.4s all;
+}
+
+.settingsPanelNavBarArrow {
+  font-size: 1.5rem;
+}
+
+.settingsPanelNavBar ul {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0rem;
+  width: 100%;
+  height: 100%;
+  gap: 0.8rem;
+  list-style: none;
+}
+
+.settingsPanelNavBar li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+}
+
+.settingsPanelNavBar li svg {
+  width: 90%;
+  height: 90%;
+}
+
+/* SIDE BAR ABERTA */
+
+.settingsPanelNavBar.expanded {
+  width: 6rem;
+  left: -6rem;
+}
+
+.settingsPanelNavBar.expanded .settingsPanelNavBarArrow {
+  display: none;
+}
+
+.settingsPanelNavBar.expanded ul {
+  display: flex;
+}
+
+.configPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 4rem;
+  width: 100%;
+  max-width: 100%;
+  height: 64rem;
+  border-radius: 2rem;
+  border: 0.2rem solid var(--primary-green);
+  box-shadow: 0.2rem 0.2rem 2rem var(--primary-green);
+  background-color: var(--white);
+}
+
+/* FORMULÁRIO DA CONFIGURAÇÃO */
+
+.configContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 50%;
+  height: 100%;
+}
+
+.configContainerHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.configContainerHeader h2 {
+  font-size: 3rem;
+  color: var(--primary-green);
+}
+
+.configContainerHeader p.headerText {
+  font-size: 1.4rem;
+  text-align: justify;
+}
+
+.configContainer input {
+  width: 100%;
+  height: 4.6rem;
+  padding: 1rem 2rem;
+  border: 0.2rem solid var(--primary-green);
+  border-radius: 1.4rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.configContainer select {
+  width: 100%;
+  height: 4.6rem;
+  padding: 1rem 2rem;
+  border: 0.2rem solid var(--primary-green);
+  border-radius: 1.4rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.configContainer p {
+  white-space: pre-line;
+  font-size: 1.2rem;
+  padding-left: 1rem;
+  width: 100%;
+}
+
+.configContainer button {
+  width: 100%;
+  height: 4.6rem;
+  border: 0.2rem solid var(--primary-green);
+  border-radius: 1.4rem;
+  font-size: 1.8rem;
+  background-color: var(--white);
+  font-weight: 600;
+  margin-top: 1.2rem;
+  box-shadow: 0 0 2rem var(--primary-green);
+  cursor: pointer;
+  transition: 0.4s all;
+}
+
+.configContainer button:hover {
+  border-color: var(--primary-green);
+  background-color: var(--primary-green);
+  color: var(--white);
+  box-shadow: none;
+  transform: scale(1.1);
+}
+
+.configListContainer {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 100%;
+}
+
+/* CORPO DA LISTA ( TÍTULO + LISTA ) */
+
+.configList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  height: 50%;
+}
+
+.configList h2 {
+  color: var(--primary-green);
+  font-size: 2rem;
+}
+
+.configList ul {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  overflow-y: auto;
+  padding: 0rem 0.4rem;
+}
+
+.configList ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+  white-space: pre-line;
+  transition: 0.8s all;
+}
+
+.configList li input {
+  width: fit-content;
+  height: 2.2rem;
+  border: 0.2rem solid var(--primary-green);
+  border-radius: 0.4rem;
+  margin-left: auto;
+  outline: none;
+  cursor: pointer;
+}
+
+.configList select {
+  border: 0.2rem solid var(--primary-green);
+  border-radius: 0.4rem;
+  outline: none;
+  padding: 0.2rem 1rem;
+  cursor: pointer;
+}
+
+.configList li:has(button:hover) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.configList li button {
+  border: 0.2rem solid var(--primary-green);
+  background-color: var(--white);
+  border-radius: 0.6rem;
+  padding: 0rem 0.6rem;
+  cursor: pointer;
+  transition: 0.4s all;
+}
+
+.configList li button:hover {
+  background-color: var(--primary-green);
+  color: white;
+}
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .settingsPanel {
+    position: static;
+    width: 82%;
+    min-height: 100%;
+  }
+
+  .configPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    gap: 4rem;
+    width: 100%;
+    height: 54rem;
+    border-radius: 2rem;
+    background-color: var(--white);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .settingsPanel {
+    position: static;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  .settingsPanelContainer {
+    min-height: 100% !important;
+  }
+
+  .configContainer {
+    width: 100%;
+    height: 46rem;
+  }
+
+  .configListContainer {
+    width: 100%;
+  }
+
+  .configList {
+    max-height: 12rem;
+  }
+
+  .configPage {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    gap: 2rem;
+    width: 100%;
+    height: 80%;
+    box-shadow: none;
+    border: none;
+  }
+
+  /* SIDE BAR ABERTA */
+
+  .settingsPanelNavBar,
+  .settingsPanelNavBar.settingsPanelNavBar.expanded {
+    position: fixed;
+    top: 0rem;
+    width: 100%;
+    border: none;
+    left: 0rem;
+    color: var(--primary-green);
+    box-shadow: 0.2rem 0.6rem 1rem rgba(0, 0, 0, 0.3);
+    border-radius: 0rem;
+    background-color: var(--white);
+  }
+
+  .settingsPanelNavBar .settingsPanelNavBarArrow {
+    display: none;
+  }
+
+  .settingsPanelNavBar ul {
+    display: flex;
+    flex-direction: row;
+  }
+}

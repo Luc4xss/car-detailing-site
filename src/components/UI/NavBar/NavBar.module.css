@@ -1,0 +1,147 @@
+.navBar {
+  position: fixed;
+  align-self: center;
+  top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2rem 2rem;
+  height: 7rem;
+  width: 70%;
+  border-radius: 5rem;
+  box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 999;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.navBarFirstContainer {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  height: 100%;
+}
+
+.navBarFirstContainer .icon {
+  width: 6rem;
+  cursor: pointer;
+}
+
+.navBarFirstContainer ul {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem;
+  height: 70%;
+  border-radius: 4rem;
+  gap: 2rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  list-style: none;
+}
+
+.navBarFirstContainer ul li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0rem 2rem;
+  border-radius: 3rem;
+  cursor: pointer;
+  transition: 0.1s all;
+}
+
+.navBarFirstContainer .budgetCount {
+  position: absolute;
+  right: 0.6rem;
+  top: 0.4rem;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2.1rem;
+  background-color: var(--primary-green);
+  border-radius: 50%;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.3rem;
+  z-index: 999;
+  transition: 0.4s all;
+  box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+.navBarFirstContainer .budgetCount:hover {
+  transform: scale(1.2);
+}
+
+.navBarFirstContainer ul li:hover {
+  transform: scale(1.04);
+}
+
+.navBarFirstContainer li a {
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  color: black;
+  font-size: 1.6rem;
+}
+
+.navBarSecondContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 100%;
+}
+
+.navBarSecondContainer .settingsBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  font-size: 1.8rem;
+  color: white;
+  padding: 0.6rem;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+.navBar button {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: none;
+  border-radius: 4rem;
+  font-weight: 600;
+  background-color: black;
+  color: white;
+  height: 70%;
+  padding: 0rem 2rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+
+.navBar ul div {
+  position: absolute;
+  background-color: white;
+  border-radius: 3rem;
+  width: 100%;
+  height: 100%;
+}
+
+/* TELAS MENORES */
+@media (max-width: 768px) {
+  .navBar {
+    width: 90%;
+  }
+  .navBar ul {
+    display: none;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+}
