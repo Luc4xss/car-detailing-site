@@ -1,22 +1,39 @@
 import styles from "./Calendar.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+
 import { dateService } from "../../../services/dateService";
+import { useCalendarData } from "../../../hooks/useCalendarData";
 
 function Calendar({ setActiveCalendar }) {
     const [allDates, setAllDates] = useState([]);
-
     const [month, setMonth] = useState(4);
-    const [blockedDates, setBlockedDates] = useState([])
+
+    const { blockedDates, availableDates, refetchBlockedDates } = useCalendarData();    // MAPS E SETS
+    // -----------------------------
+
+    const availableDatesSet = useMemo(() => {
+        return new Set(availableDates.map(d => d.date));
+    }, [availableDates]);
+
+    const blockedDatesMap = useMemo(() => {
+        return new Map(
+            blockedDates.map(d => [d.date, d])
+        );
+    }, [blockedDates]);
+
+
 
     function getPrevMonthPadding(year, month) {
         const firstDay = new Date(year, month, 1).getDay();
         const prevMonthLastDay = new Date(year, month, 0);
 
-        const padding = []
+        const padding = [];
 
         for (let i = firstDay - 1; i >= 0; i--) {
             const d = new Date(prevMonthLastDay);
+
             d.setDate(prevMonthLastDay.getDate() - i);
+
             padding.push(d);
         }
 
@@ -25,11 +42,14 @@ function Calendar({ setActiveCalendar }) {
 
     function getNextMonthPadding(year, month) {
         const lastDay = new Date(year, month + 1, 0).getDay();
-        const padding = []
+
+        const padding = [];
 
         for (let i = lastDay + 1; i <= 6; i++) {
             const d = new Date(year, month + 1, 0);
+
             d.setDate(d.getDate() + (i - lastDay));
+
             padding.push(d);
         }
 
@@ -38,75 +58,74 @@ function Calendar({ setActiveCalendar }) {
 
     function getMonthDays(year, month) {
         const days = [];
+
         const date = new Date(year, month, 1);
 
         while (date.getMonth() === month) {
             days.push(new Date(date));
+
             date.setDate(date.getDate() + 1);
         }
+
         return days;
     }
 
     function getFullCalendar() {
         const prev = getPrevMonthPadding(2026, month);
+
         const curr = getMonthDays(2026, month);
+
         const next = getNextMonthPadding(2026, month);
 
-        const days = [...prev, ...curr, ...next];
-        return days;
+        return [...prev, ...curr, ...next];
     }
 
     function getMonth() {
-        switch (month) {
-            case 0:
-                return "Janeiro";
-            case 1:
-                return "Fevereiro";
-            case 2:
-                return "Março";
-            case 3:
-                return "Abril";
-            case 4:
-                return "Maio";
-            case 5:
-                return "Junho";
-            case 6:
-                return "Julho";
-            case 7:
-                return "Setembro";
-            case 8:
-                return "Fevereiro";
-            case 9:
-                return "Outubro";
-            case 10:
-                return "Novembro";
-            case 11:
-                return "Dezembro";
-            default:
-                return "Mês desconhecido"
-        }
+        const months = [
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+            "Agosto",
+            "Setembro",
+            "Outubro",
+            "Novembro",
+            "Dezembro",
+        ];
+
+        return months[month];
     }
 
     useEffect(() => {
-        async function getDates() {
-            const blockedDates = await dateService.getBlockedDates();
-            getMonthBlockedDates(blockedDates);
-            setAllDates(getFullCalendar());
-        }
-        getDates();
+        setAllDates(getFullCalendar());
     }, [month]);
 
-    function getMonthBlockedDates(dates) {
-        console.log(dates)
-        const monthBlockedDates = []
-        dates.map(d => {
-            let date = d.date.split("-")[1]
-            if (date == month + 1) {
-                monthBlockedDates.push(parseInt(d.date.split("-")[2]))
+    async function handleDateClick(e, date) {
+        e.stopPropagation();
+
+        const iso = date.toISOString().split("T")[0];
+
+        const isAvailable = availableDatesSet.has(iso);
+
+        const blockedData = blockedDatesMap.get(iso);
+
+        try {
+            if (isAvailable) {
+                await dateService.createBlockedDate({
+                    date: iso,
+                    reason: "BUSY",
+                });
+            } else if (blockedData) {
+                await dateService.deleteBlockedDate(blockedData.id);
             }
-        })
-        console.log(monthBlockedDates)
-        setBlockedDates(monthBlockedDates);
+
+            await refetchBlockedDates();
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     return (
@@ -117,7 +136,11 @@ function Calendar({ setActiveCalendar }) {
             <h2>
                 {getMonth().toUpperCase()}
             </h2>
-            <div className={styles.calendarContainer}>
+
+            <div
+                className={styles.calendarContainer}
+                onClick={(e) => e.stopPropagation()}
+            >
                 <div className={styles.calendarHeader}>
                     <p>DOM</p>
                     <p>SEG</p>
@@ -127,18 +150,53 @@ function Calendar({ setActiveCalendar }) {
                     <p>SEX</p>
                     <p>SAB</p>
                 </div>
+
                 <div className={styles.datesGrid}>
-                    {allDates.map((date, index) => (
-                        <div
-                            className={date.getMonth() !== month ? `${styles.dateBox} ${styles.previous}` : date.getDay() === 0 || date.getDay() === 6 ? `${styles.dateBox} ${styles.weekend}` : blockedDates.includes(date.getDate()) ? `${styles.dateBox} ${styles.blocked}` : styles.dateBox} key={index}
-                            onClick={() => console.log(date.toISOString().split("T")[0])}
-                        >
-                            {date.getDate()}
-                        </div>
-                    ))}
+                    {allDates.map((date, index) => {
+                        const iso = date.toISOString().split("T")[0];
+
+                        const isCurrentMonth =
+                            date.getMonth() === month;
+
+                        const isWeekend =
+                            date.getDay() === 0 ||
+                            date.getDay() === 6;
+
+                        const isBlocked =
+                            blockedDatesMap.has(iso);
+
+                        return (
+                            <div
+                                key={index}
+                                onClick={(e) =>
+                                    handleDateClick(e, date)
+                                }
+                                className={`
+                                    ${styles.dateBox}
+
+                                    ${!isCurrentMonth
+                                        ? styles.previous
+                                        : ""
+                                    }
+
+                                    ${isWeekend
+                                        ? styles.weekend
+                                        : ""
+                                    }
+
+                                    ${isBlocked
+                                        ? styles.blocked
+                                        : ""
+                                    }
+                                `}
+                            >
+                                {date.getDate()}
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
-        </div >
+        </div>
     );
 }
 

@@ -25,7 +25,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--shadow-green);
   padding: 2rem;
   border-radius: 1rem;
 }
@@ -36,7 +35,7 @@
 }
 
 .calendarHeader p {
-  width: 8rem;
+  width: 12rem;
   height: 3rem;
   line-height: 3rem;
   border-radius: 0.4rem;
@@ -56,8 +55,9 @@
 }
 
 .dateBox {
-  width: 8rem;
+  width: 12rem;
   height: 8rem;
+  border: 0.2rem solid var(--shadow-green);
   border-radius: 0.4rem;
   font-size: 2rem;
   font-weight: 600;
@@ -75,15 +75,17 @@
   border: 0.2rem solid red;
 }
 
-.dateBox.previous {
-  opacity: 0.7;
-}
-
 .dateBox.blocked {
   color: red;
+  border: 0.2rem solid red;
+}
+.dateBox.previous {
+  opacity: 0.7;
+  border: none;
 }
 
 .dateBox.weekend {
   background-color: var(--shadow-green);
   color: var(--white);
+  border: none;
 }
