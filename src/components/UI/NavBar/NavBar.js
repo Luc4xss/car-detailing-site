@@ -18,7 +18,7 @@ function NavBar({ count }) {
 
     let navItems = []
 
-    if (user.role === "ADMIN") {
+    if (user?.role === "ADMIN") {
         navItems = [
             { id: "#home", label: "Ínicio" },
             { id: "#products", label: "Lavagens" },
